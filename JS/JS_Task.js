@@ -1,11 +1,10 @@
 window.App = angular.module('App', ['ui.bootstrap', 'ngResource']);
 
 App.controller('mainCtrl', ['$scope', function($scope) {
-
-
+	
 // Declaring a JSON Array 
 
-/* If it will be from she server you may need to load it
+/* If it will be from the server you may need to load it
 
 $http.get('config/menu.json').success(function(response) { 
     $scope.data = angular.fromJson(response);
@@ -13,7 +12,7 @@ $http.get('config/menu.json').success(function(response) {
 */
 
 var response= [
-    { id: "Идентификатор", name: "Название", price: "Стоимость", quantity: "Количество" },
+    { "i": "Идентификатор", "name": "Название", "price": "Стоимость", "quantity": "Количество" },
     [ 1, "iPhone 5", "400", 5 ],			[ 2, "XBOX", "300", 7 ],
     [ 3, "Play Station 4", "300", 7 ],		[ 4, "iPad Air 2", "400", 5 ],
     [ 5, "Samsung Galaxy s6", "300", 7 ],	[ 6, "Nvidia Shield", "300", 7 ],
@@ -42,7 +41,23 @@ var response= [
     [ 51, "XBOX", "300", 7 ],				[ 52, "XBOX", "300", 7 ]   
 ];
 
-$scope.data = angular.fromJson(response);
+	try {
+		
+		$scope.data = angular.fromJson(response);
+		
+		if (!$scope.data[0].id || !$scope.data[0].name || 
+			!$scope.data[0].price || !$scope.data[0].quantity) {
+			throw new SyntaxError("Data Error");
+		}
+	} catch(e) {
+
+		if (e.name == "SyntaxError") {
+			alert("Sorry, data contains an error");
+		} else {
+			throw e;
+		}
+
+	}
 
 $scope.objects = [];
 

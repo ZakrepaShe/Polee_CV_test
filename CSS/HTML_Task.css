@@ -1,0 +1,115 @@
+/* Style reset*/
+
+html, body, ul, p {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+}
+
+body, html {
+	height: 100%;
+}
+
+/* Header_menu */
+
+#Header_menu {
+	height: 35px;
+	border-bottom: 3px solid black;
+	display: table;
+	width: 100%;
+}
+
+	#Header_menu ul {
+		list-style: none;
+		display: table-cell;
+		vertical-align: middle;	
+	}
+		#Header_menu ul li {
+			border-right: 1px solid black;
+			display: inline;
+			padding: 0 10px;
+		}
+
+			#Header_menu ul li:last-child {
+				border-right: none;
+			}
+
+/* Absolute positioning */
+.positioning {
+	position: absolute;
+	top: 38px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+
+/* Left cascade menu */
+#left {
+	overflow-y: auto;
+	border-right: 3px solid black;
+	width: 300px;
+}
+
+	#left a {
+		text-decoration: none;
+	}
+
+		#left ul {
+			list-style: none;
+		}
+
+			#left ul li {
+				padding-left: 10px
+			}
+
+/* Right content block */
+#right {
+	margin-left: 303px;
+}
+
+/* Breadcrumbs */
+	#breadcrumb{
+		display: table;
+		height: 35px;
+		border-bottom: 3px solid black;
+		width: 100%	
+	}
+
+		#breadcrumb ul{
+			list-style: none;
+			display: table-cell;
+			vertical-align: middle;
+		}
+
+			#breadcrumb ul li {
+				display: inline;
+			}
+
+				#breadcrumb ul li:first-child {
+					margin-left: 10px;
+				}
+
+/* Photogallery */
+#Photo_gallery {
+	text-align: center;
+	overflow-y: auto;
+
+}
+
+.img_holder {
+	display: inline-block;
+	margin: 5px 10px;
+	vertical-align: middle;
+}
+
+	img {
+		width: 250px;
+		height: 250px;
+		border: 2px solid black;
+	}
+
+		#Not_standart {
+			width: 300px;
+			height: 300px;
+		}

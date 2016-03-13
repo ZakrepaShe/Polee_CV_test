@@ -1,0 +1,130 @@
+<!--Container-->
+		<div class="container-fluid">
+			
+		<!--Controller-->
+			<div ng-app="App" ng-controller="mainCtrl">
+				
+		<!--Some top space-->
+				<br>
+				<br>
+				<br>
+				
+		<!--Radio buttons block-->
+				<div>
+
+					<label>
+						<input id="Small" type="radio" ng-model="numPerP1" ng-value="10" />
+						Small
+					</label>
+					<label>
+						<input id="Big" type="radio" ng-model="numPerP1" ng-value="20" />
+						Big
+					</label>
+					
+					<label>
+						<input id="Own" name="toggler" type="radio" ng-model="numPerP1" ng-value="true" />
+						Own
+					</label>						
+					<span>
+						<input  type="number" name="input" ng-model="numPerPage1" min="0" max="50" required ng-hide="NumberinputON1 != 1">
+					</span>
+
+				</div>
+
+			<!--Search form-->
+                <form>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-search"></i>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Search" ng-model="searchFish">
+                        </div>
+                    </div>
+                </form>
+
+			<!--Data Table-->
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                <a href="#" ng-click="sortType = 'id'; sortReverse = !sortReverse">
+                                     {{data[0].id}} 
+                                     <span ng-show="sortType == 'id' && !sortReverse" class="fa fa-caret-down"></span> 
+                                     <span ng-show="sortType == 'id' && sortReverse" class="fa fa-caret-up"></span>
+                                </a>
+                             </th>
+                            <th>
+                                <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse">
+                                     {{data[0].name}}  
+                                     <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+									 <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
+                                 </a>
+                             </th>
+                            <th>
+                                <a href="#" ng-click="sortType = 'price'; sortReverse = !sortReverse">
+                                     {{data[0].price}}  
+                                     <span ng-show="sortType == 'price' && !sortReverse" class="fa fa-caret-down"></span>
+									 <span ng-show="sortType == 'price' && sortReverse" class="fa fa-caret-up"></span>
+                                 </a>
+                             </th>
+                            <th>
+                                <a href="#" ng-click="sortType = 'quantity'; sortReverse = !sortReverse">
+                                     {{data[0].quantity}}  
+                                     <span ng-show="sortType == 'quantity' && !sortReverse" class="fa fa-caret-down"></span>
+									 <span ng-show="sortType == 'quantity' && sortReverse" class="fa fa-caret-up"></span>
+                                 </a>
+                             </th>
+                             
+                        </tr>
+                    </thead>
+                    
+                    <tbody ng-repeat="obj in objects | orderBy:sortType:sortReverse | filter: paginate1 | filter:searchFish" ng-click="setSelected();">
+                        <tr >
+                            <td>{{obj.id}}</td>
+                            <td>{{obj.name}}</td>
+                            <td>{{obj.price}}</td>
+                            <td>{{obj.quantity}}</td>
+
+                        </tr>
+                    </tbody>
+                </table><!--End Data Table-->
+     
+                <!--Clicked Row-->
+                <table class="table table-striped table-hover table-bordered">
+                	<thead>
+                        <tr>
+                            <th>
+                            	{{data[0].id}} 
+                            </th>
+                            <th>
+                            	{{data[0].name}} 
+                             </th>
+                            <th>
+                            	{{data[0].price}}
+                             </th>
+                            <th>
+                            	{{data[0].quantity}} 
+                             </th>
+                             
+                        </tr>
+                    </thead>
+                    
+	                <tbody>
+	                	<tr>
+	                	    <td>{{info.id}}</td>
+	                	    <td>{{info.name}}</td>
+	                	    <td>{{info.price}}</td>
+	                	    <td>{{info.quantity}}</td>
+	                	</tr>
+	                </tbody>
+                </table>
+
+           <!--Pagination-->           
+                <pagination total-items="totalItems" ng-model="currentPage"
+                max-size="5" boundary-links="true"
+                items-per-page="numPerPage1" class="pagination-sm"></pagination>
+                
+
+            </div><!--End Controller-->
+        </div><!--End Container-->

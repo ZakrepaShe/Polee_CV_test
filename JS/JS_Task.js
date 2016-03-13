@@ -12,7 +12,7 @@ $http.get('config/menu.json').success(function(response) {
 */
 
 var response= [
-    { "i": "Идентификатор", "name": "Название", "price": "Стоимость", "quantity": "Количество" },
+    { "id": "Идентификатор", "name": "Название", "price": "Стоимость", "quantity": "Количество" },
     [ 1, "iPhone 5", "400", 5 ],			[ 2, "XBOX", "300", 7 ],
     [ 3, "Play Station 4", "300", 7 ],		[ 4, "iPad Air 2", "400", 5 ],
     [ 5, "Samsung Galaxy s6", "300", 7 ],	[ 6, "Nvidia Shield", "300", 7 ],

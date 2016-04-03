@@ -41,22 +41,11 @@ var response= [
     [ 51, "XBOX", "300", 7 ],				[ 52, "XBOX", "300", 7 ]   
 ];
 
-	try {
+	$scope.data = angular.fromJson(response);
 		
-		$scope.data = angular.fromJson(response);
-		
-		if (!$scope.data[0].id || !$scope.data[0].name || 
-			!$scope.data[0].price || !$scope.data[0].quantity) {
-			throw new SyntaxError("Data Error");
-		}
-	} catch(e) {
-
-		if (e.name == "SyntaxError") {
+	if (!$scope.data[0].id || !$scope.data[0].name || 
+		!$scope.data[0].price || !$scope.data[0].quantity) {
 			alert("Sorry, data contains an error");
-		} else {
-			throw e;
-		}
-
 	}
 
 $scope.objects = [];
